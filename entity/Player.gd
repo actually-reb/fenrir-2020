@@ -9,6 +9,9 @@ func _ready():
 	pass
 
 func _process(delta):
+	pass
+
+func _physics_process(delta):
 	var move = Vector2()
 	# Get movement input
 	if Input.is_action_pressed("move_up"):

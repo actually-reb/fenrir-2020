@@ -12,10 +12,12 @@ func _ready():
 	hop_timer.start()
 
 func _process(delta):
-	if hop_timer.time_left < hop_time:
-		move_and_slide(direction * speed)
 	var time = min(1, hop_timer.time_left / hop_time)
 	sprite.position.y = sin(time * PI) * -4
+
+func _physics_process(delta):
+	if hop_timer.time_left < hop_time:
+		move_and_slide(direction * speed)
 
 func hop_towards(pos):
 	direction = (pos - position).normalized()
