@@ -4,7 +4,7 @@
 [ext_resource path="res://sprite/player.png" type="Texture" id=2]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 22.0548, 10 )
+extents = Vector2( 21.7398, 21.4688 )
 
 [node name="Player" type="KinematicBody2D" groups=[
 "player",
@@ -15,5 +15,9 @@ script = ExtResource( 1 )
 texture = ExtResource( 2 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2( 0, 12.5992 )
+position = Vector2( 0.314987, -2.00272e-05 )
 shape = SubResource( 1 )
+
+[node name="InvulnTimer" type="Timer" parent="."]
+wait_time = 0.6
+one_shot = true
