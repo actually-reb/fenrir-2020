@@ -6,6 +6,10 @@ var speed = 100
 var direction = Vector2()
 var hop_time = 0.2
 var hop_interval = 0.3
+var push_velocity = Vector2()
+var push_decel = 1500
+
+var health = 2
 
 func _ready():
 	hop_timer.wait_time = randf() * hop_interval # Randomize start
@@ -18,6 +22,8 @@ func _process(delta):
 func _physics_process(delta):
 	if hop_timer.time_left < hop_time:
 		move_and_slide(direction * speed)
+	
+	push_velocity = push_velocity.normalized() * max(0, push_velocity.length() - push_decel * delta)
 	
 	var reversed = false
 	for i in get_slide_count():
@@ -46,3 +52,12 @@ func _on_HopTimer_timeout():
 	if player:
 		sprite.flip_h = player.position.x < position.x
 		hop_towards(player.position)
+
+func damage(damage_amount, push):
+	health -= damage_amount
+	if health <= 0:
+		die()
+	push_velocity = push
+
+func die():
+	queue_free()

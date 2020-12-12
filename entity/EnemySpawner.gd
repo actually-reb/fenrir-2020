@@ -13,7 +13,6 @@ func spawn_tiny_robots(num):
 	for i in range(num):
 		var inst = TINY_ROBOT.instance()
 		inst.position = position + Vector2(x, y)
-		print(inst.position)
 		get_parent().add_enemy(inst)
 		x += space
 		if x >= width / 2:
