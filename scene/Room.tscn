@@ -1,7 +1,8 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://entity/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://sprite/floor.png" type="Texture" id=2]
+[ext_resource path="res://entity/TinyRobot.tscn" type="PackedScene" id=3]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 477.132, 23.6911 )
@@ -42,3 +43,6 @@ shape = SubResource( 4 )
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
 position = Vector2( 251, 180 )
+
+[node name="TinyRobot" parent="." instance=ExtResource( 3 )]
+position = Vector2( 766.642, 246.942 )
