@@ -4,7 +4,8 @@ signal died
 
 onready var sprite = $Sprite
 onready var hop_timer = $HopTimer
-var speed = 100
+var base_speed = 150
+var speed = 150
 var direction = Vector2()
 var hop_time = 0.2
 var hop_interval = 0.3
@@ -16,6 +17,7 @@ var health = 2
 func _ready():
 	hop_timer.wait_time = randf() * hop_interval # Randomize start
 	hop_timer.start()
+	base_speed = 130 + (randi() % 180)
 
 func _process(delta):
 	var time = min(1, hop_timer.time_left / hop_time)
@@ -32,7 +34,7 @@ func _physics_process(delta):
 		var collision = get_slide_collision(i)
 		var collider = collision.collider
 		if collider and collider.is_in_group("player"):
-			collider.damage(1, direction * 400)
+			collider.damage(1, direction * 450)
 			if not reversed:
 				direction = -direction
 				reversed = true
@@ -53,6 +55,7 @@ func _on_HopTimer_timeout():
 	
 	if player:
 		sprite.flip_h = player.position.x < position.x
+		speed = base_speed + (randi() % 50)
 		hop_towards(player.position)
 	else:
 		direction = Vector2()
