@@ -52,7 +52,6 @@ position = Vector2( 251, 180 )
 [node name="SmokeLayer" type="CanvasLayer" parent="."]
 
 [node name="SmokeEffect" type="Sprite" parent="SmokeLayer"]
-visible = false
 position = Vector2( 640, 363.678 )
 texture = ExtResource( 7 )
 __meta__ = {
