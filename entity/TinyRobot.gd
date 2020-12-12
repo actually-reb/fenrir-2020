@@ -38,3 +38,5 @@ func _on_HopTimer_timeout():
 	if player:
 		sprite.flip_h = player.position.x < position.x
 		hop_towards(player.position)
+	else:
+		direction = Vector2()
