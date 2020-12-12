@@ -53,13 +53,14 @@ func _physics_process(delta):
 
 func _input(event):
 	if event is InputEventMouseButton:
-		var mouse_dir = (position - event.position).normalized()
+		var mouse_dir = (event.position - position).normalized()
 		melee_attack(mouse_dir)
 
 func melee_attack(dir):
 	if melee_attack_timer.is_stopped():
 		melee_attack_timer.start()
 		var atk = MELEE_ATTACK.instance()
+		atk.direction = dir
 		add_child(atk)
 
 func is_invuln(): # Check if player is invulnerable to damage

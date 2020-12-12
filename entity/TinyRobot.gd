@@ -23,7 +23,7 @@ func _process(delta):
 
 func _physics_process(delta):
 	if hop_timer.time_left < hop_time:
-		move_and_slide(direction * speed)
+		move_and_slide(direction * speed + push_velocity)
 	
 	push_velocity = push_velocity.normalized() * max(0, push_velocity.length() - push_decel * delta)
 	
