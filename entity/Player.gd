@@ -1,15 +1,26 @@
 extends KinematicBody2D
 
+onready var invuln_timer = $InvulnTimer
+
+signal took_damage
+
 var max_speed = 250
 var accel = 3000
 var decel = 3000
 var velocity = Vector2()
+var push_velocity = Vector2()
+var push_decel = 1500
+
+var health = 6
 
 func _ready():
 	pass
 
 func _process(delta):
-	pass
+	if is_invuln():
+		visible = not visible
+	else:
+		visible = true
 
 func _physics_process(delta):
 	var move = Vector2()
@@ -29,7 +40,21 @@ func _physics_process(delta):
 	else: # Decelerate if not moving
 		velocity = velocity.normalized() * max(0, velocity.length() - decel * delta)
 	
-	if velocity.length() > max_speed:
+	if velocity.length() > max_speed: # Cap speed to max_speed
 		velocity = velocity.normalized() * max_speed
 	
-	move_and_slide(velocity)
+	move_and_slide(velocity + push_velocity)
+	
+	push_velocity = push_velocity.normalized() * max(0, push_velocity.length() - push_decel * delta)
+
+func is_invuln(): # Check if player is invulnerable to damage
+	return not invuln_timer.is_stopped()
+
+func damage(damage_amount, push):
+	if is_invuln():
+		return
+	health -= damage_amount
+	push_velocity = push
+	velocity = Vector2()
+	invuln_timer.start()
+	emit_signal("took_damage")

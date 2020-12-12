@@ -22,12 +22,14 @@ func _physics_process(delta):
 		var collision = get_slide_collision(i)
 		var collider = collision.collider
 		if collider.is_in_group("player"):
+			collider.damage(1, direction * 400)
 			direction = -direction
 
 func hop_towards(pos):
 	direction = (pos - position).normalized()
 
 func _on_HopTimer_timeout():
+	# Get player node
 	var player_array = get_tree().get_nodes_in_group("player")
 	var player
 	if player_array.size() > 0:
