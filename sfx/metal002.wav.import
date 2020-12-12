@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/metal002.wav-aaec1a317daf3f2ac9645b546679d55a.sample"
+
+[deps]
+
+source_file="res://sfx/metal002.wav"
+dest_files=[ "res://.import/metal002.wav-aaec1a317daf3f2ac9645b546679d55a.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0
