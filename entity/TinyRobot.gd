@@ -31,7 +31,7 @@ func _physics_process(delta):
 	for i in get_slide_count():
 		var collision = get_slide_collision(i)
 		var collider = collision.collider
-		if collider.is_in_group("player"):
+		if collider and collider.is_in_group("player"):
 			collider.damage(1, direction * 400)
 			if not reversed:
 				direction = -direction
