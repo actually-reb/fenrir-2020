@@ -1,12 +1,26 @@
 extends KinematicBody2D
 
 onready var sprite = $Sprite
+onready var hop_timer = $HopTimer
 var speed = 100
+var direction = Vector2()
+var hop_time = 0.2
+var hop_interval = 0.3
 
 func _ready():
-	pass # Replace with function body.
+	hop_timer.wait_time = hop_interval
+	hop_timer.start()
 
 func _process(delta):
+	if hop_timer.time_left < hop_time:
+		move_and_slide(direction * speed)
+	var time = min(1, hop_timer.time_left / hop_time)
+	sprite.position.y = sin(time * PI) * -4
+
+func hop_towards(pos):
+	direction = (pos - position).normalized()
+
+func _on_HopTimer_timeout():
 	var player_array = get_tree().get_nodes_in_group("player")
 	var player
 	if player_array.size() > 0:
@@ -14,5 +28,4 @@ func _process(delta):
 	
 	if player:
 		sprite.flip_h = player.position.x < position.x
-		var move = (player.position - position).normalized()
-		move_and_slide(move * speed)
+		hop_towards(player.position)
