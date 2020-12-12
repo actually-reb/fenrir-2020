@@ -23,7 +23,7 @@ func _process(delta):
 	
 	if move.x != 0 or move.y != 0:
 		velocity += move * accel
-	else:
+	else: # Decelerate if not moving
 		velocity = velocity.normalized() * max(0, velocity.length() - decel)
 	
 	if velocity.length() > max_speed:
