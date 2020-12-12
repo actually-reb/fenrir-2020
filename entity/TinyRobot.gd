@@ -8,7 +8,7 @@ var hop_time = 0.2
 var hop_interval = 0.3
 
 func _ready():
-	hop_timer.wait_time = hop_interval
+	hop_timer.wait_time = randf() * hop_interval # Randomize start
 	hop_timer.start()
 
 func _process(delta):
@@ -18,17 +18,25 @@ func _process(delta):
 func _physics_process(delta):
 	if hop_timer.time_left < hop_time:
 		move_and_slide(direction * speed)
+	
+	var reversed = false
 	for i in get_slide_count():
 		var collision = get_slide_collision(i)
 		var collider = collision.collider
 		if collider.is_in_group("player"):
 			collider.damage(1, direction * 400)
-			direction = -direction
+			if not reversed:
+				direction = -direction
+				reversed = true
 
 func hop_towards(pos):
 	direction = (pos - position).normalized()
 
 func _on_HopTimer_timeout():
+	if hop_timer.wait_time != hop_time:
+		hop_timer.wait_time = hop_time
+		hop_timer.start()
+	
 	# Get player node
 	var player_array = get_tree().get_nodes_in_group("player")
 	var player
