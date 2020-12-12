@@ -58,6 +58,7 @@ func _input(event):
 
 func melee_attack(dir):
 	if melee_attack_timer.is_stopped():
+		$MeleeSound.play()
 		melee_attack_timer.start()
 		var atk = MELEE_ATTACK.instance()
 		atk.direction = dir
