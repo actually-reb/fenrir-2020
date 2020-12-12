@@ -14,7 +14,7 @@ func _process(delta):
 func open():
 	$AnimatedSprite.play()
 	is_open = true
-	$CollisionShape2D.disabled = false
+	$CollisionShape2D.set_deferred("disabled", false)
 	$AudioStreamPlayer.play()
 
 func _on_Elevator_body_entered(body):
