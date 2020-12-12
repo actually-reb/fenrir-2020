@@ -15,6 +15,7 @@ func open():
 	$AnimatedSprite.play()
 	is_open = true
 	$CollisionShape2D.disabled = false
+	$AudioStreamPlayer.play()
 
 func _on_Elevator_body_entered(body):
 	if body.is_in_group("player"):

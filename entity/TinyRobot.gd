@@ -1,5 +1,7 @@
 extends KinematicBody2D
 
+signal died
+
 onready var sprite = $Sprite
 onready var hop_timer = $HopTimer
 var speed = 100
@@ -62,4 +64,5 @@ func damage(damage_amount, push):
 	push_velocity = push
 
 func die():
+	emit_signal("died")
 	queue_free()
