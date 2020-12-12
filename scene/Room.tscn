@@ -1,8 +1,10 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://entity/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://sprite/floor.png" type="Texture" id=2]
 [ext_resource path="res://entity/TinyRobot.tscn" type="PackedScene" id=3]
+[ext_resource path="res://scene/Smoke.gd" type="Script" id=4]
+[ext_resource path="res://sprite/Smoke.png" type="Texture" id=5]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 568.052, 23.6911 )
@@ -46,3 +48,15 @@ position = Vector2( 251, 180 )
 
 [node name="TinyRobot" parent="." instance=ExtResource( 3 )]
 position = Vector2( 766.642, 246.942 )
+
+[node name="SmokeLayer" type="CanvasLayer" parent="."]
+
+[node name="SmokeEffect" type="Sprite" parent="SmokeLayer"]
+position = Vector2( 640, 363.678 )
+texture = ExtResource( 5 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="CanvasModulate" type="CanvasModulate" parent="SmokeLayer/SmokeEffect"]
+script = ExtResource( 4 )
