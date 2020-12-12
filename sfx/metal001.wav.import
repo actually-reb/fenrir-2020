@@ -2,12 +2,12 @@
 
 importer="wav"
 type="AudioStreamSample"
-path="res://.import/metal001.wav-281c6439aaef1598152877f73db3270c.sample"
+path="res://.import/metal001.wav-a2991e49c19f8659c3145287ef66c309.sample"
 
 [deps]
 
-source_file="res://sound effect/metal001.wav"
-dest_files=[ "res://.import/metal001.wav-281c6439aaef1598152877f73db3270c.sample" ]
+source_file="res://sfx/metal001.wav"
+dest_files=[ "res://.import/metal001.wav-a2991e49c19f8659c3145287ef66c309.sample" ]
 
 [params]
 

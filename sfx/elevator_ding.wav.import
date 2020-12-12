@@ -2,12 +2,12 @@
 
 importer="wav"
 type="AudioStreamSample"
-path="res://.import/elevator_ding.wav-f5d57f1595c0a91cf2fbf3af68c46939.sample"
+path="res://.import/elevator_ding.wav-9f5e0cf6fb87dda8e9f12714ab025654.sample"
 
 [deps]
 
-source_file="res://sound effect/elevator_ding.wav"
-dest_files=[ "res://.import/elevator_ding.wav-f5d57f1595c0a91cf2fbf3af68c46939.sample" ]
+source_file="res://sfx/elevator_ding.wav"
+dest_files=[ "res://.import/elevator_ding.wav-9f5e0cf6fb87dda8e9f12714ab025654.sample" ]
 
 [params]
 
