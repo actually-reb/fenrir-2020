@@ -1,8 +1,8 @@
 extends KinematicBody2D
 
 var max_speed = 250
-var accel = 50
-var decel = 50
+var accel = 3000
+var decel = 3000
 var velocity = Vector2()
 
 func _ready():
@@ -25,9 +25,9 @@ func _physics_process(delta):
 	move = move.normalized()
 	
 	if move.x != 0 or move.y != 0:
-		velocity += move * accel
+		velocity += move * accel * delta
 	else: # Decelerate if not moving
-		velocity = velocity.normalized() * max(0, velocity.length() - decel)
+		velocity = velocity.normalized() * max(0, velocity.length() - decel * delta)
 	
 	if velocity.length() > max_speed:
 		velocity = velocity.normalized() * max_speed
