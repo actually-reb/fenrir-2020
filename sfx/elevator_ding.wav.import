@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/elevator_ding.wav-f5d57f1595c0a91cf2fbf3af68c46939.sample"
+
+[deps]
+
+source_file="res://sound effect/elevator_ding.wav"
+dest_files=[ "res://.import/elevator_ding.wav-f5d57f1595c0a91cf2fbf3af68c46939.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

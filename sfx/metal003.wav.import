@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/metal003.wav-22a742d633e1c551ce88af43bac8e14c.sample"
+
+[deps]
+
+source_file="res://sound effect/metal003.wav"
+dest_files=[ "res://.import/metal003.wav-22a742d633e1c551ce88af43bac8e14c.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0
