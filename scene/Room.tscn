@@ -63,7 +63,7 @@ __meta__ = {
 script = ExtResource( 6 )
 
 [node name="EnemySpawner" parent="." instance=ExtResource( 3 )]
-position = Vector2( 931.741, 241.119 )
+position = Vector2( 895.782, 350.495 )
 
 [node name="Elevator" parent="." instance=ExtResource( 5 )]
 position = Vector2( 636.018, 679.944 )
