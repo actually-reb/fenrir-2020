@@ -1,6 +1,9 @@
 extends KinematicBody2D
 
 onready var invuln_timer = $InvulnTimer
+onready var melee_attack_timer = $MeleeAttackTimer
+
+var MELEE_ATTACK = preload("res://entity/MeleeAttack.tscn")
 
 signal took_damage
 signal died
@@ -47,6 +50,17 @@ func _physics_process(delta):
 	move_and_slide(velocity + push_velocity)
 	
 	push_velocity = push_velocity.normalized() * max(0, push_velocity.length() - push_decel * delta)
+
+func _input(event):
+	if event is InputEventMouseButton:
+		var mouse_dir = (position - event.position).normalized()
+		melee_attack(mouse_dir)
+
+func melee_attack(dir):
+	if melee_attack_timer.is_stopped():
+		melee_attack_timer.start()
+		var atk = MELEE_ATTACK.instance()
+		add_child(atk)
 
 func is_invuln(): # Check if player is invulnerable to damage
 	return not invuln_timer.is_stopped()
