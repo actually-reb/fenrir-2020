@@ -61,8 +61,18 @@ func damage(damage_amount, push):
 	health -= damage_amount
 	if health <= 0:
 		die()
+	else:
+		$HurtSound.play()
 	push_velocity = push
 
 func die():
+	var hs = $HurtSound
+	
+	hs.pitch_scale = 1.2
+	hs.play()
+	
+	hs.connect("finished", $HurtSound, "queue_free")
+	remove_child(hs)
+	get_parent().add_child(hs)
 	emit_signal("died")
 	queue_free()

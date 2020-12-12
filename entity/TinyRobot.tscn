@@ -1,10 +1,14 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://sprite/tinyrobot.png" type="Texture" id=1]
 [ext_resource path="res://entity/TinyRobot.gd" type="Script" id=2]
+[ext_resource path="res://sfx/metal001.wav" type="AudioStream" id=3]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 14, 14 )
+
+[sub_resource type="AudioStreamRandomPitch" id=2]
+audio_stream = ExtResource( 3 )
 
 [node name="TinyRobot" type="KinematicBody2D" groups=[
 "enemy",
@@ -20,4 +24,7 @@ shape = SubResource( 1 )
 [node name="HopTimer" type="Timer" parent="."]
 wait_time = 0.3
 autostart = true
+
+[node name="HurtSound" type="AudioStreamPlayer" parent="."]
+stream = SubResource( 2 )
 [connection signal="timeout" from="HopTimer" to="." method="_on_HopTimer_timeout"]
