@@ -3,6 +3,7 @@ extends KinematicBody2D
 onready var invuln_timer = $InvulnTimer
 
 signal took_damage
+signal died
 
 var max_speed = 250
 var accel = 3000
@@ -53,8 +54,17 @@ func is_invuln(): # Check if player is invulnerable to damage
 func damage(damage_amount, push):
 	if is_invuln():
 		return
+	emit_signal("took_damage")
 	health -= damage_amount
+	
+	if health <= 0:
+		die()
+		return
+	
 	push_velocity = push
 	velocity = Vector2()
 	invuln_timer.start()
-	emit_signal("took_damage")
+
+func die():
+	emit_signal("died")
+	queue_free()
