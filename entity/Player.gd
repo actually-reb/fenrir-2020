@@ -2,6 +2,7 @@ extends KinematicBody2D
 
 onready var invuln_timer = $InvulnTimer
 onready var melee_attack_timer = $MeleeAttackTimer
+onready var animated_sprite = $AnimatedSprite
 
 var MELEE_ATTACK = preload("res://entity/MeleeAttack.tscn")
 
@@ -39,6 +40,8 @@ func _physics_process(delta):
 		move += Vector2(1, 0)
 	move = move.normalized()
 	
+	set_walk_animation(move)
+	
 	if move.x != 0 or move.y != 0:
 		velocity += move * accel * delta
 	else: # Decelerate if not moving
@@ -55,6 +58,23 @@ func _input(event):
 	if event is InputEventMouseButton and event.button_index == BUTTON_LEFT and event.pressed:
 		var mouse_dir = (event.position - position).normalized()
 		melee_attack(mouse_dir)
+
+func set_walk_animation(dir):
+	if dir == Vector2():
+		animated_sprite.stop()
+	else:
+		if not animated_sprite.playing:
+			animated_sprite.play()
+		if dir.x != 0:
+			if dir.x < 0:
+				animated_sprite.animation = "left"
+			else:
+				animated_sprite.animation = "right"
+		else:
+			if dir.y < 0:
+				animated_sprite.animation = "up"
+			else:
+				animated_sprite.animation = "down"
 
 func melee_attack(dir):
 	if melee_attack_timer.is_stopped():
