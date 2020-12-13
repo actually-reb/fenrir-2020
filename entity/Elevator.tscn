@@ -19,6 +19,7 @@ animations = [ {
 extents = Vector2( 52.085, 11.942 )
 
 [node name="Elevator" type="Area2D"]
+z_index = -4
 script = ExtResource( 5 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
