@@ -1,10 +1,15 @@
 extends Position2D
 
+export var spawn_one = false
+
 var TINY_ROBOT = preload("res://entity/TinyRobot.tscn")
 
 func _ready():
-	var global = get_node("/root/Global")
-	spawn_tiny_robots(min(global.current_floor, 16))
+	if spawn_one:
+		spawn_tiny_robots(1)
+	else:
+		var global = get_node("/root/Global")
+		spawn_tiny_robots(min(global.current_floor, 25))
 
 func spawn_tiny_robots(num):
 	var space = 32

@@ -4,7 +4,9 @@ var direction = Vector2()
 var speed = 1000
 
 func _ready():
-	pass
+	var Global = get_node("/root/Global")
+	var p = Global.width_powerups
+	scale.y = 1 + log(p + 1) / 2
 
 func _physics_process(delta):
 	rotation = direction.angle()
