@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/elevator_moving001.wav-471c7de643b91993ff5887c50f1e5ded.sample"
+
+[deps]
+
+source_file="res://sfx/elevator_moving001.wav"
+dest_files=[ "res://.import/elevator_moving001.wav-471c7de643b91993ff5887c50f1e5ded.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

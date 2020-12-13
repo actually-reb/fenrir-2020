@@ -1,5 +1,6 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
+[ext_resource path="res://sfx/elevator_moving002.wav" type="AudioStream" id=1]
 [ext_resource path="res://scene/Game.gd" type="Script" id=2]
 [ext_resource path="res://music/game1.ogg" type="AudioStream" id=3]
 [ext_resource path="res://scene/HealthBar.tscn" type="PackedScene" id=4]
@@ -63,3 +64,6 @@ anims/exit = SubResource( 2 )
 offset = Vector2( 0, 720 )
 anchor_mode = 0
 current = true
+
+[node name="ElevatorSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 1 )

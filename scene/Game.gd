@@ -46,6 +46,7 @@ func load_room(flr):
 	$AnimationPlayer.play("enter")
 
 func next_room():
+	$ElevatorSound.play()
 	room.remove_child(player)
 	$AnimationPlayer.play("exit")
 	yield($AnimationPlayer, "animation_finished")
