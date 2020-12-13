@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://sprite/game_menu.png" type="Texture" id=1]
 [ext_resource path="res://music/titlescreen.ogg" type="AudioStream" id=2]
 [ext_resource path="res://scene/Title.gd" type="Script" id=3]
+[ext_resource path="res://sprite/start_button.png" type="Texture" id=4]
 
 [node name="Title" type="Node2D"]
 script = ExtResource( 3 )
@@ -18,11 +19,12 @@ texture = ExtResource( 1 )
 centered = false
 
 [node name="StartButton" type="Button" parent="."]
-margin_left = 898.324
-margin_top = 516.568
-margin_right = 1205.32
-margin_bottom = 645.568
-text = "Start"
+margin_left = 650.877
+margin_top = 436.577
+margin_right = 1313.88
+margin_bottom = 716.577
+icon = ExtResource( 4 )
+flat = true
 __meta__ = {
 "_edit_use_anchors_": false
 }
