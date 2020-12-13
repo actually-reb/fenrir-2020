@@ -79,6 +79,7 @@ func game_over():
 	$GameOver/RestartButton.disabled = false
 	$GameOver.set_floor_count(Global.current_floor)
 	$AudioStreamPlayer.stop()
+	$GameOverSound.play()
 
 func _on_RestartButton_pressed():
 	emit_signal("restarted")
