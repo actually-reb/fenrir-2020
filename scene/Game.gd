@@ -1,5 +1,7 @@
 extends Node
 
+signal restarted
+
 var ROOM = preload("res://scene/Room.tscn")
 var PLAYER = preload("res://entity/Player.tscn")
 
@@ -73,4 +75,9 @@ func _process(delta):
 
 func game_over():
 	$GameOver.visible = true
+	$GameOver/RestartButton.disabled = false
 	$GameOver.set_floor_count(Global.current_floor)
+	$AudioStreamPlayer.stop()
+
+func _on_RestartButton_pressed():
+	emit_signal("restarted")
