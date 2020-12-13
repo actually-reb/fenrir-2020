@@ -46,6 +46,9 @@ func _physics_process(delta):
 		if collider and collider.is_in_group("wall"):
 			if not random_hops > 0:
 				random_hops = 3
+		if collider and collider.is_in_group("enemy"):
+			if not random_hops > 0:
+				random_hops = 1
 
 func hop_towards_dir(dir):
 	direction = dir
