@@ -17,6 +17,5 @@ animations = [ {
 
 [node name="Torch" type="AnimatedSprite"]
 frames = SubResource( 1 )
-frame = 2
-playing = true
+frame = 4
 script = ExtResource( 6 )
