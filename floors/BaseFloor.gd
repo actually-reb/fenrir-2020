@@ -10,3 +10,4 @@ func _ready():
 func remove_powerups():
 	for p in powerups:
 		p.queue_free()
+	$PowerupSound.play()
