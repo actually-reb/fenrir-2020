@@ -15,6 +15,7 @@ extents = Vector2( 587.133, 23.6911 )
 extents = Vector2( 24.7797, 289.715 )
 
 [node name="BaseFloor" type="Node2D"]
+z_index = -5
 
 [node name="Floor" type="StaticBody2D" parent="."]
 z_index = -1

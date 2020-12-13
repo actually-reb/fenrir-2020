@@ -7,6 +7,9 @@ var enemy_count = 0
 func _ready():
 	pass
 
+func load_floor(flr):
+	add_child(flr.instance())
+
 func add_enemy(enemy):
 	call_deferred("add_child", enemy)
 	enemy.connect("died", self, "_on_enemy_died")
