@@ -4,6 +4,8 @@ onready var Global = get_node("/root/Global")
 onready var invuln_timer = $InvulnTimer
 onready var melee_attack_timer = $MeleeAttackTimer
 onready var animated_sprite = $AnimatedSprite
+onready var fish_sprite = $FishSprite
+onready var tween = $Tween
 
 var MELEE_ATTACK = preload("res://entity/MeleeAttack.tscn")
 
@@ -100,15 +102,32 @@ func melee_attack(dir):
 		
 		attacking = true
 		var angle = dir.angle() + PI # very hacky fix for angle() returning negative numbers.
+		fish_sprite.z_index = -1
 		if angle > PI/4 and angle <= 3*PI/4:
 			animated_sprite.animation = "attack_up"
+			fish_sprite.position = $SwingUp.position
 		elif angle > 3*PI/4 and angle <= 5*PI/4:
 			animated_sprite.animation = "attack_right"
+			fish_sprite.position = $SwingRight.position
 		elif angle > 5*PI/4 and angle <= 7*PI/4:
 			animated_sprite.animation = "attack_down"
+			fish_sprite.position = $SwingDown.position
+			fish_sprite.z_index = 0
 		else:
 			animated_sprite.animation = "attack_left"
+			fish_sprite.position = $SwingLeft.position
 		animated_sprite.play()
+		
+		fish_sprite.visible = true
+		angle = dir.angle() + PI
+		tween.interpolate_property(fish_sprite, 
+		"rotation",
+		angle + PI/4,
+		angle - PI/1.5,
+		0.25,
+		Tween.TRANS_QUINT,
+		Tween.EASE_OUT)
+		tween.start()
 
 func is_invuln(): # Check if player is invulnerable to damage
 	return not invuln_timer.is_stopped()
@@ -132,6 +151,7 @@ func die():
 	emit_signal("died")
 	queue_free()
 
-func _on_AnimatedSprite_animation_finished():
-	if animated_sprite.animation.match("attack*"):
-		attacking = false
+func _on_Tween_tween_completed(object, key):
+	attacking = false
+	fish_sprite.visible = false
+	animated_sprite.animation = animated_sprite.animation.substr(7)

@@ -6,6 +6,7 @@
 extents = Vector2( 11.0046, 29.6635 )
 
 [node name="MeleeAttack" type="Area2D"]
+z_index = -1
 script = ExtResource( 1 )
 
 [node name="ColorRect" type="ColorRect" parent="."]

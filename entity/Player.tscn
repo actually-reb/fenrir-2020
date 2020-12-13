@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=2]
+[gd_scene load_steps=19 format=2]
 
 [ext_resource path="res://entity/Player.gd" type="Script" id=1]
 [ext_resource path="res://sprite/player_fish_left_2.png" type="Texture" id=2]
@@ -15,6 +15,7 @@
 [ext_resource path="res://sprite/player_attack_right.png" type="Texture" id=13]
 [ext_resource path="res://sprite/player_attack_left.png" type="Texture" id=14]
 [ext_resource path="res://sprite/player_attack_down.png" type="Texture" id=15]
+[ext_resource path="res://sprite/fish_attack.png" type="Texture" id=16]
 
 [sub_resource type="SpriteFrames" id=2]
 animations = [ {
@@ -71,9 +72,10 @@ script = ExtResource( 1 )
 position = Vector2( -1, -10.25 )
 scale = Vector2( 0.6, 0.6 )
 frames = SubResource( 2 )
-animation = "left"
+animation = "attack_right"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
 position = Vector2( 0.502273, 0.936423 )
 shape = SubResource( 1 )
 
@@ -91,4 +93,28 @@ stream = ExtResource( 3 )
 [node name="HurtSound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 11 )
 pitch_scale = 1.69
-[connection signal="animation_finished" from="AnimatedSprite" to="." method="_on_AnimatedSprite_animation_finished"]
+
+[node name="Tween" type="Tween" parent="."]
+
+[node name="SwingLeft" type="Position2D" parent="."]
+position = Vector2( -24.25, -7 )
+scale = Vector2( 0.5, 0.5 )
+
+[node name="SwingUp" type="Position2D" parent="."]
+position = Vector2( 7.25, -36 )
+scale = Vector2( 0.5, 0.5 )
+
+[node name="SwingDown" type="Position2D" parent="."]
+position = Vector2( -5.75, 7.25 )
+scale = Vector2( 0.5, 0.5 )
+
+[node name="SwingRight" type="Position2D" parent="."]
+position = Vector2( 23.25, -6.75 )
+scale = Vector2( 0.5, 0.5 )
+
+[node name="FishSprite" type="Sprite" parent="."]
+visible = false
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 16 )
+offset = Vector2( -8, -36 )
+[connection signal="tween_completed" from="Tween" to="." method="_on_Tween_tween_completed"]
