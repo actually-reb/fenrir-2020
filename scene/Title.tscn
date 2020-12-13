@@ -19,12 +19,13 @@ texture = ExtResource( 1 )
 centered = false
 
 [node name="StartButton" type="Button" parent="."]
-margin_left = 650.877
-margin_top = 436.577
-margin_right = 1313.88
-margin_bottom = 716.577
+margin_left = 651.0
+margin_top = 437.0
+margin_right = 1314.0
+margin_bottom = 717.0
 icon = ExtResource( 4 )
 flat = true
+expand_icon = true
 __meta__ = {
 "_edit_use_anchors_": false
 }
