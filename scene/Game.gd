@@ -54,7 +54,7 @@ func next_room():
 	Global.current_floor += 1
 	call_deferred("remove_child", room)
 	room.queue_free()
-	if Global.current_floor % 5 == 1:
+	if Global.current_floor % 4 == 0:
 		load_room(random_item_floor())
 	else:
 		load_room(random_floor())
