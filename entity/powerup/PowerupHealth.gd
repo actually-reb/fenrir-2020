@@ -4,4 +4,4 @@ func _ready():
 	pass
 
 func collect(player):
-	player.health += 2
+	player.health += 4
