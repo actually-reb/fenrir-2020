@@ -1,9 +1,14 @@
 extends Area2D
 
 signal powerup_collected
+var time = 0
 
 func _ready():
-	pass
+	time += randf() * 2 * PI
+
+func _process(delta):
+	time += delta * 4
+	$Sprite.position.y = sin(time) * 3
 
 func collect(player):
 	pass
