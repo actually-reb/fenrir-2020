@@ -18,6 +18,9 @@ var random_hops = 0
 var health = 2
 
 func _ready():
+	# random sprite
+	sprite.frame = randi() % 5
+	
 	hop_timer.wait_time = randf() * hop_interval # Randomize start
 	hop_timer.start()
 	wait_timer.wait_time = randf() * 1 + 0.2
