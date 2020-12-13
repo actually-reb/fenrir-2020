@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://entity/Player.gd" type="Script" id=1]
 [ext_resource path="res://sprite/player_fish_left_2.png" type="Texture" id=2]
@@ -10,6 +10,7 @@
 [ext_resource path="res://sprite/player_fish_down_2.png" type="Texture" id=8]
 [ext_resource path="res://sprite/player_fish_left.png" type="Texture" id=9]
 [ext_resource path="res://sprite/player_fish_up.png" type="Texture" id=10]
+[ext_resource path="res://sfx/hurt001.wav" type="AudioStream" id=11]
 
 [sub_resource type="SpriteFrames" id=2]
 animations = [ {
@@ -62,3 +63,7 @@ one_shot = true
 
 [node name="MeleeSound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 3 )
+
+[node name="HurtSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 11 )
+pitch_scale = 1.69

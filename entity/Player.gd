@@ -86,7 +86,7 @@ func melee_attack(dir):
 	if melee_attack_timer.is_stopped():
 		$MeleeSound.play()
 		
-		melee_attack_timer.wait_time = max(0.05, melee_time - log(Global.speed_powerups + 1) / 9)
+		melee_attack_timer.wait_time = max(0.05, melee_time - log(Global.speed_powerups + 1) / 12)
 		melee_attack_timer.start()
 		attack_held = false
 		var atk = MELEE_ATTACK.instance()
@@ -101,6 +101,7 @@ func damage(damage_amount, push):
 		return
 	emit_signal("took_damage")
 	health -= damage_amount
+	$HurtSound.play()
 	
 	if health <= 0:
 		die()
