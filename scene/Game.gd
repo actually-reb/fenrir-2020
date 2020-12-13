@@ -46,6 +46,7 @@ func load_room(flr):
 	room.connect("elevator_entered", self, "next_room")
 	player.position = room.get_player_spawn()
 	room.add_child(player)
+	player.get_node("AnimatedSprite").animation = "up"
 	$AnimationPlayer.play("enter")
 
 func next_room():
