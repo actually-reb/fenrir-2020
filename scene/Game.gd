@@ -14,6 +14,7 @@ var item_floors = []
 
 func _ready():
 	player = PLAYER.instance()
+	player.connect("died", self, "game_over")
 	
 	var dir = Directory.new()
 	if dir.open("res://floors/designs/") == OK:
@@ -69,3 +70,7 @@ func _process(delta):
 		health_bar.set_health(player.health)
 	else:
 		health_bar.set_health(0)
+
+func game_over():
+	$GameOver.visible = true
+	$GameOver.set_floor_count(Global.current_floor)
