@@ -10,6 +10,7 @@ var player
 var room
 
 var floors = []
+var item_floors = []
 
 func _ready():
 	player = PLAYER.instance()
@@ -21,7 +22,14 @@ func _ready():
 		while file_name != "":
 			if file_name != "." and file_name != "..":
 				floors.push_back(load("res://floors/designs/" + file_name))
-				print(file_name)
+			file_name = dir.get_next()
+	
+	if dir.open("res://floors/item/") == OK:
+		dir.list_dir_begin()
+		var file_name = dir.get_next()
+		while file_name != "":
+			if file_name != "." and file_name != "..":
+				item_floors.push_back(load("res://floors/item/" + file_name))
 			file_name = dir.get_next()
 	
 	randomize()
@@ -41,10 +49,16 @@ func next_room():
 	room.remove_child(player)
 	call_deferred("remove_child", room)
 	room.queue_free()
-	load_room(random_floor())
+	if Global.current_floor % 5 == 1:
+		load_room(random_item_floor())
+	else:
+		load_room(random_floor())
 
 func random_floor():
 	return floors[randi() % floors.size()]
+
+func random_item_floor():
+	return item_floors[randi() % item_floors.size()]
 
 func _process(delta):
 	if player:

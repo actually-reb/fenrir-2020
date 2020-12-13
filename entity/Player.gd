@@ -1,5 +1,6 @@
 extends KinematicBody2D
 
+onready var Global = get_node("/root/Global")
 onready var invuln_timer = $InvulnTimer
 onready var melee_attack_timer = $MeleeAttackTimer
 onready var animated_sprite = $AnimatedSprite
@@ -16,6 +17,9 @@ var velocity = Vector2()
 var push_velocity = Vector2()
 var push_decel = 1500
 
+var melee_time = 0.5
+var attack_held = false
+
 var health = 6
 
 func _ready():
@@ -26,6 +30,8 @@ func _process(delta):
 		visible = not visible
 	else:
 		visible = true
+	if attack_held and $MeleeAttackTimer.is_stopped():
+		melee_attack((get_viewport().get_mouse_position() - position).normalized())
 
 func _physics_process(delta):
 	var move = Vector2()
@@ -55,9 +61,9 @@ func _physics_process(delta):
 	push_velocity = push_velocity.normalized() * max(0, push_velocity.length() - push_decel * delta)
 
 func _input(event):
-	if event is InputEventMouseButton and event.button_index == BUTTON_LEFT and event.pressed:
-		var mouse_dir = (event.position - position).normalized()
-		melee_attack(mouse_dir)
+	if event is InputEventMouseButton and event.button_index == BUTTON_LEFT:
+		if event.pressed:
+			attack_held = true
 
 func set_walk_animation(dir):
 	if dir == Vector2():
@@ -79,7 +85,10 @@ func set_walk_animation(dir):
 func melee_attack(dir):
 	if melee_attack_timer.is_stopped():
 		$MeleeSound.play()
+		
+		melee_attack_timer.wait_time = max(0.05, melee_time - log(Global.speed_powerups + 1) / 9)
 		melee_attack_timer.start()
+		attack_held = false
 		var atk = MELEE_ATTACK.instance()
 		atk.direction = dir
 		add_child(atk)
