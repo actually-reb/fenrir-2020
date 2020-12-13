@@ -19,6 +19,7 @@ var push_decel = 1500
 
 var melee_time = 0.5
 var attack_held = false
+var attacking = false
 
 var health = 6
 
@@ -46,7 +47,8 @@ func _physics_process(delta):
 		move += Vector2(1, 0)
 	move = move.normalized()
 	
-	set_walk_animation(move)
+	if not attacking:
+		set_walk_animation(move)
 	
 	if move.x != 0 or move.y != 0:
 		velocity += move * accel * delta
@@ -83,6 +85,9 @@ func set_walk_animation(dir):
 				animated_sprite.animation = "down"
 
 func melee_attack(dir):
+	#if dir.x == 0 and dir.y == 0:
+	#	dir = Vector2(0, 1)
+	
 	if melee_attack_timer.is_stopped():
 		$MeleeSound.play()
 		
@@ -92,6 +97,18 @@ func melee_attack(dir):
 		var atk = MELEE_ATTACK.instance()
 		atk.direction = dir
 		add_child(atk)
+		
+		attacking = true
+		var angle = dir.angle() + PI # very hacky fix for angle() returning negative numbers.
+		if angle > PI/4 and angle <= 3*PI/4:
+			animated_sprite.animation = "attack_up"
+		elif angle > 3*PI/4 and angle <= 5*PI/4:
+			animated_sprite.animation = "attack_right"
+		elif angle > 5*PI/4 and angle <= 7*PI/4:
+			animated_sprite.animation = "attack_down"
+		else:
+			animated_sprite.animation = "attack_left"
+		animated_sprite.play()
 
 func is_invuln(): # Check if player is invulnerable to damage
 	return not invuln_timer.is_stopped()
@@ -114,3 +131,7 @@ func damage(damage_amount, push):
 func die():
 	emit_signal("died")
 	queue_free()
+
+func _on_AnimatedSprite_animation_finished():
+	if animated_sprite.animation.match("attack*"):
+		attacking = false
