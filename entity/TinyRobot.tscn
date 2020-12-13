@@ -2,7 +2,7 @@
 
 [ext_resource path="res://sprite/tinyrobot.png" type="Texture" id=1]
 [ext_resource path="res://entity/TinyRobot.gd" type="Script" id=2]
-[ext_resource path="res://sfx/metal001.wav" type="AudioStream" id=3]
+[ext_resource path="res://sfx/metal_slap.wav" type="AudioStream" id=3]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 14, 14 )
