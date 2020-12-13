@@ -19,3 +19,6 @@ func _on_enemy_died():
 	enemy_count -= 1
 	if enemy_count <= 0:
 		elevator.open()
+
+func _on_Elevator_elevator_entered():
+	pass # Replace with function body.

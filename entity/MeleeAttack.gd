@@ -17,4 +17,4 @@ func _physics_process(delta):
 
 func _on_MeleeAttack_body_entered(body):
 	if body.is_in_group("enemy") and body.has_method("damage"):
-		body.damage(1, direction * 500)
+		body.damage(1, direction * 575)

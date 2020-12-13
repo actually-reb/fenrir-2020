@@ -27,3 +27,4 @@ script = ExtResource( 6 )
 
 [node name="Elevator" parent="." instance=ExtResource( 5 )]
 position = Vector2( 636.018, 679.944 )
+[connection signal="elevator_entered" from="Elevator" to="." method="_on_Elevator_elevator_entered"]

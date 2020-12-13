@@ -5,7 +5,7 @@
 [ext_resource path="res://sfx/woosh_sound001.wav" type="AudioStream" id=3]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 21.7398, 21.4688 )
+extents = Vector2( 16.1027, 18.2602 )
 
 [node name="Player" type="KinematicBody2D" groups=[
 "player",
@@ -16,7 +16,7 @@ script = ExtResource( 1 )
 texture = ExtResource( 2 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2( 0.314987, -2.00272e-05 )
+position = Vector2( 0.502273, 0.936423 )
 shape = SubResource( 1 )
 
 [node name="InvulnTimer" type="Timer" parent="."]

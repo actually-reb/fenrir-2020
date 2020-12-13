@@ -1,0 +1,85 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://entity/EnemySpawner.tscn" type="PackedScene" id=1]
+[ext_resource path="res://entity/Box.tscn" type="PackedScene" id=2]
+[ext_resource path="res://floors/BaseFloor.tscn" type="PackedScene" id=3]
+
+[node name="BaseFloor" instance=ExtResource( 3 )]
+
+[node name="Box" parent="." index="1" instance=ExtResource( 2 )]
+position = Vector2( 304, 240 )
+
+[node name="Box5" parent="." index="2" instance=ExtResource( 2 )]
+position = Vector2( 256, 240 )
+
+[node name="Box21" parent="." index="3" instance=ExtResource( 2 )]
+position = Vector2( 256, 432 )
+
+[node name="Box22" parent="." index="4" instance=ExtResource( 2 )]
+position = Vector2( 1024, 240 )
+
+[node name="Box23" parent="." index="5" instance=ExtResource( 2 )]
+position = Vector2( 1024, 432 )
+
+[node name="Box2" parent="." index="6" instance=ExtResource( 2 )]
+position = Vector2( 304, 432 )
+
+[node name="Box3" parent="." index="7" instance=ExtResource( 2 )]
+position = Vector2( 448, 480 )
+
+[node name="Box4" parent="." index="8" instance=ExtResource( 2 )]
+position = Vector2( 448, 192 )
+
+[node name="Box6" parent="." index="9" instance=ExtResource( 2 )]
+position = Vector2( 640, 432 )
+
+[node name="Box11" parent="." index="10" instance=ExtResource( 2 )]
+position = Vector2( 496, 480 )
+
+[node name="Box12" parent="." index="11" instance=ExtResource( 2 )]
+position = Vector2( 496, 192 )
+
+[node name="Box13" parent="." index="12" instance=ExtResource( 2 )]
+position = Vector2( 784, 192 )
+
+[node name="Box14" parent="." index="13" instance=ExtResource( 2 )]
+position = Vector2( 784, 480 )
+
+[node name="Box7" parent="." index="14" instance=ExtResource( 2 )]
+position = Vector2( 832, 480 )
+
+[node name="Box8" parent="." index="15" instance=ExtResource( 2 )]
+position = Vector2( 832, 192 )
+
+[node name="Box9" parent="." index="16" instance=ExtResource( 2 )]
+position = Vector2( 976, 240 )
+
+[node name="Box15" parent="." index="17" instance=ExtResource( 2 )]
+position = Vector2( 1024, 288 )
+
+[node name="Box16" parent="." index="18" instance=ExtResource( 2 )]
+position = Vector2( 1024, 336 )
+
+[node name="Box17" parent="." index="19" instance=ExtResource( 2 )]
+position = Vector2( 1024, 384 )
+
+[node name="Box18" parent="." index="20" instance=ExtResource( 2 )]
+position = Vector2( 256, 288 )
+
+[node name="Box19" parent="." index="21" instance=ExtResource( 2 )]
+position = Vector2( 256, 336 )
+
+[node name="Box20" parent="." index="22" instance=ExtResource( 2 )]
+position = Vector2( 256, 384 )
+
+[node name="Box10" parent="." index="23" instance=ExtResource( 2 )]
+position = Vector2( 976, 432 )
+
+[node name="EnemySpawner" parent="." index="24" instance=ExtResource( 1 )]
+position = Vector2( 208, 192 )
+
+[node name="EnemySpawner2" parent="." index="25" instance=ExtResource( 1 )]
+position = Vector2( 1072, 192 )
+
+[node name="EnemySpawner3" parent="." index="26" instance=ExtResource( 1 )]
+position = Vector2( 640, 192 )

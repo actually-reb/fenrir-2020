@@ -3,16 +3,16 @@
 [ext_resource path="res://sprite/floor.png" type="Texture" id=1]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 568.052, 23.6911 )
+extents = Vector2( 568.052, 144 )
 
 [sub_resource type="RectangleShape2D" id=2]
-extents = Vector2( 21.4123, 318.899 )
+extents = Vector2( 168, 600 )
 
 [sub_resource type="RectangleShape2D" id=3]
-extents = Vector2( 587.133, 23.6911 )
+extents = Vector2( 587.133, 168 )
 
 [sub_resource type="RectangleShape2D" id=4]
-extents = Vector2( 24.7797, 289.715 )
+extents = Vector2( 168, 600 )
 
 [node name="BaseFloor" type="Node2D"]
 z_index = -5
@@ -27,17 +27,17 @@ texture = ExtResource( 1 )
 centered = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Floor"]
-position = Vector2( 645.416, 48.2659 )
+position = Vector2( 640, -72 )
 shape = SubResource( 1 )
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="Floor"]
-position = Vector2( 66.2253, 363.678 )
+position = Vector2( -80, 384 )
 shape = SubResource( 2 )
 
 [node name="CollisionShape2D3" type="CollisionShape2D" parent="Floor"]
-position = Vector2( 644.293, 671.232 )
+position = Vector2( 640, 816 )
 shape = SubResource( 3 )
 
 [node name="CollisionShape2D4" type="CollisionShape2D" parent="Floor"]
-position = Vector2( 1216.75, 359.188 )
+position = Vector2( 1360, 384 )
 shape = SubResource( 4 )

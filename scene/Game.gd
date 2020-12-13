@@ -20,7 +20,11 @@ func _ready():
 				print(file_name)
 			file_name = dir.get_next()
 	
-	$Room.load_floor(floors[0])
+	randomize()
+	$Room.load_floor(random_floor())
+
+func random_floor():
+	return floors[randi() % floors.size()]
 
 func _process(delta):
 	if player:
