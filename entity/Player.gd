@@ -52,7 +52,7 @@ func _physics_process(delta):
 	push_velocity = push_velocity.normalized() * max(0, push_velocity.length() - push_decel * delta)
 
 func _input(event):
-	if event is InputEventMouseButton:
+	if event is InputEventMouseButton and event.button_index == BUTTON_LEFT and event.pressed:
 		var mouse_dir = (event.position - position).normalized()
 		melee_attack(mouse_dir)
 

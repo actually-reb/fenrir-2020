@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://floors/BaseFloor.tscn" type="PackedScene" id=1]
 [ext_resource path="res://entity/Box.tscn" type="PackedScene" id=2]
+[ext_resource path="res://entity/EnemySpawner.tscn" type="PackedScene" id=3]
 
 [node name="Floor1" instance=ExtResource( 1 )]
 
@@ -43,3 +44,12 @@ position = Vector2( 880, 480 )
 
 [node name="Box13" parent="." index="13" instance=ExtResource( 2 )]
 position = Vector2( 880, 528 )
+
+[node name="EnemySpawner" parent="." index="14" instance=ExtResource( 3 )]
+position = Vector2( 640, 168 )
+
+[node name="EnemySpawner2" parent="." index="15" instance=ExtResource( 3 )]
+position = Vector2( 1072, 432 )
+
+[node name="EnemySpawner3" parent="." index="16" instance=ExtResource( 3 )]
+position = Vector2( 208, 456 )
