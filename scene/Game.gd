@@ -1,14 +1,18 @@
 extends Node
 
+var ROOM = preload("res://scene/Room.tscn")
+var PLAYER = preload("res://entity/Player.tscn")
+
+onready var Global = get_node("/root/Global")
 onready var health_bar = $HealthBar
 var player
+
+var room
 
 var floors = []
 
 func _ready():
-	var arr = get_tree().get_nodes_in_group("player")
-	if arr.size() > 0:
-		player = arr[0]
+	player = PLAYER.instance()
 	
 	var dir = Directory.new()
 	if dir.open("res://floors/designs/") == OK:
@@ -21,7 +25,23 @@ func _ready():
 			file_name = dir.get_next()
 	
 	randomize()
-	$Room.load_floor(random_floor())
+	Global.reset_game()
+	load_room(random_floor())
+
+func load_room(flr):
+	room = ROOM.instance()
+	call_deferred("add_child", room)
+	room.load_floor(flr)
+	room.connect("elevator_entered", self, "next_room")
+	player.position = room.get_player_spawn()
+	room.add_child(player)
+
+func next_room():
+	Global.current_floor += 1
+	room.remove_child(player)
+	call_deferred("remove_child", room)
+	room.queue_free()
+	load_room(random_floor())
 
 func random_floor():
 	return floors[randi() % floors.size()]

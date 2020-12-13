@@ -4,8 +4,7 @@ var TINY_ROBOT = preload("res://entity/TinyRobot.tscn")
 
 func _ready():
 	var global = get_node("/root/Global")
-	#spawn_tiny_robots(min(global.current_floor, 16))
-	spawn_tiny_robots(9)
+	spawn_tiny_robots(min(global.current_floor, 16))
 
 func spawn_tiny_robots(num):
 	var space = 32
