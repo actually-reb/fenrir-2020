@@ -69,7 +69,7 @@ func random_item_floor():
 	return item_floors[randi() % item_floors.size()]
 
 func _process(delta):
-	if player:
+	if is_instance_valid(player):
 		health_bar.set_health(player.health)
 	else:
 		health_bar.set_health(0)

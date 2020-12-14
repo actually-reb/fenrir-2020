@@ -79,7 +79,7 @@ func _on_HopTimer_timeout():
 		if player_array.size() > 0:
 			player = player_array[0]
 		
-		if player:
+		if is_instance_valid(player):
 			sprite.flip_h = player.position.x < position.x
 			speed = base_speed + (randi() % 50)
 			hop_towards(player.position)
